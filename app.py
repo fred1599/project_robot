@@ -1,7 +1,4 @@
 """Flask app package."""
-
-"""Flask app package."""
-
 from robot import app
 
 
