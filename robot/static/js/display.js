@@ -1,5 +1,5 @@
 $(document).ready(function() {
-     $('form').on('submit', function(event) {
+     $('form').on('load', function(event) {
        $.ajax({
           data : {
              question : $('#question').val(),
