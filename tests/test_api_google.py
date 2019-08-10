@@ -1,7 +1,7 @@
-from nose.tools import assert_true
-from robot import app
-
 import requests
+from nose.tools import assert_true
+
+from robot import app
 
 
 def test_request_response():

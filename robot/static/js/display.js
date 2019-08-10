@@ -1,5 +1,6 @@
 $(document).ready(function() {
-     $('form').on('load', function(event) {
+     $('#submit').click(function(event) {
+       $(document).load('/question #address,#wiki,#map');
        $.ajax({
           data : {
              question : $('#question').val(),

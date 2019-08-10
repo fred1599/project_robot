@@ -1,6 +1,5 @@
-from nose.tools import assert_true
-
 import requests
+from nose.tools import assert_true
 
 
 def test_request_response():
