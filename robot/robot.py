@@ -22,7 +22,7 @@ def question():
     elif request.method == 'POST':
         q = request.form['question']
         if q:
-            query = ' '.join(parse(q))
+            query = b' '.join(parse(q)).decode()
             params = {
                 'input': query,
                 'inputtype': 'textquery',
@@ -37,14 +37,14 @@ def question():
             ad = result['candidates'][0]['formatted_address'].split(',')
             if len(ad) == 3:
                 street_name, city, country = map(str.strip, ad)
-                title = street_name
+                title = street_name + ' ' + city
             elif len(ad) == 2:
                 city, country = map(str.strip, ad)
                 infos = city.split()
                 if len(infos) == 2:
-                    title = infos[1]
+                    title = city + ' ' + country
                 else:
-                    title = city
+                    title = infos[0]
             elif len(ad) == 1:
                 country = ad[0].strip()
                 title = country
@@ -62,7 +62,7 @@ def question():
                     'prop': 'extracts',
                     'exintro': '',
                     'explaintext': '',
-                    'titles': ' '.join(re.findall('[a-zA-Z]+', ' '.join(parse(title)))),
+                    'titles': ' '.join(re.findall('[a-zA-Z]+', b' '.join(parse(title)).decode())),
                     'format': 'json',
                 }
 
