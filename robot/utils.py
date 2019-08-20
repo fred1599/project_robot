@@ -1,6 +1,6 @@
 from .words import WORDSLIST
 from textwrap import wrap
-import unidecode
+# import unidecode
 
 
 def parse(question):
