@@ -21,6 +21,8 @@ def question():
                                city=city, wiki=parse_wiki, exact_address=exact_address)
     elif request.method == 'POST':
         q = request.form['question']
+        if not q:
+            return redirect('question')
         if q:
             query = b' '.join(parse(q)).decode()
             params = {
@@ -94,7 +96,5 @@ def question():
                         'robot_template.html', location=location,
                         city=city, wiki=p, exact_address=ad,
                     )
-                else:
-                    return redirect('question')
     else:
         return Response(status=400)
