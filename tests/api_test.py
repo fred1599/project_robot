@@ -3,7 +3,7 @@ from unittest.mock import Mock, patch
 import requests
 from nose.tools import assert_is_not_none, assert_list_equal
 
-from robot import app
+from project_robot.robot import app
 
 
 @patch('requests.get')
@@ -27,11 +27,11 @@ def test_request_response(mock_get):
     if not response.ok:
         response = None
 
-    assert_list_equal(response.json(), params)
+    assert_is_not_none(response)
 
 
 @patch('requests.get')
-def test_request_response(mock_get):
+def test_request_response_1(mock_get):
 
     mock_get.return_value.ok = True
 
